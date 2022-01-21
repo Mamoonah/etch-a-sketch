@@ -1,14 +1,9 @@
 let paintArea = document.querySelector('#grid');
-let slider = document.querySelector('#squares-quantity');
+let slider = document.querySelector('#size-slider');
 let resetButton = document.querySelector('#reset');
-let rainbow = document.getElementById('rainbow');
+let paintingMode = 'normal';
 
 let rainbowMode;
-
-rainbow.addEventListener('click', () => {
-    rainbowMode = rainbow.checked;
-    sizeUpdate();
-})
 
 slider.addEventListener('change', sizeUpdate)
 resetButton.addEventListener('click', sizeUpdate)
@@ -16,7 +11,6 @@ resetButton.addEventListener('click', sizeUpdate)
 sizeUpdate()
 
 function sizeUpdate(){
-    let squaresNumber = document.querySelector('.squares-number');
     let gridWidth = parseInt(slider.value)
     let squares = document.querySelectorAll('.square')
     
@@ -25,7 +19,6 @@ function sizeUpdate(){
     })
     createSquares(paintArea, gridWidth)
 
-    squaresNumber.innerText = gridWidth**2
     paintArea.style['grid-template-rows'] = `repeat(${gridWidth}, 1fr)`
     paintArea.style['grid-template-columns'] = `repeat(${gridWidth}, 1fr)`
 }
@@ -40,7 +33,8 @@ function createSquares(parrent, quantity){
 }
 
 function changeColor(e){
-    if(rainbowMode){
+    paintingMode = document.querySelector('input[name="mode"]:checked').value;
+    if(paintingMode === 'rainbow'){
         e.target.style['background-color'] = `rgba(${Math.random()*200}, ${Math.random()*200}, ${Math.random()*200}, 1)`;
     } else {
         e.target.style['background-color'] = 'rgba(0, 0, 0, 0.7)'

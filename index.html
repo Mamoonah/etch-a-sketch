@@ -8,17 +8,24 @@
     <script src="./main.js" defer></script>
 </head>
 <body>
-    <h1>ETCH-A-SKETCH</h1>
-    <div class="size-slider">
-        <span>Number of squares</span>
-        <input min="1" max="50" step="1" type="range" id="squares-quantity">
-        <span class="squares-number">256</span>
+    
+    <div class="container">
+        <div class="title">
+            ETCH-A-SKETCH
+        </div>
+        <div id="grid"></div>
+        <div class="options">
+            <input class="mode-selector" type="radio" name="mode" id="normal-mode" value="normal" checked>
+            <label class="mode-selector-label" for="normal-mode">Normal</label>
+            <input class="mode-selector" type="radio" name="mode" id="rainbow-mode" value="rainbow">
+            <label class="mode-selector-label" for="rainbow-mode">Rainbow</label>
+            <div class="size-slider">
+                <input min="1" max="50" step="1" type="range" id="size-slider">
+            </div>
+            <div id="reset">
+                <div class="reset-icon"></div>
+            </div>
+        </div>
     </div>
-    <div>
-        <input type="checkbox" name="rainbow" id="rainbow" value="true">
-        <label for="rainbow">Rainbow Mode <3</label>
-    </div>
-    <div id="grid"></div>
-    <button id="reset">Reset</button>
 </body>
 </html>
